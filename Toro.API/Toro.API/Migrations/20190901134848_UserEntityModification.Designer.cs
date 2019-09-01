@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Toro.API.Data;
 
 namespace Toro.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20190901134848_UserEntityModification")]
+    partial class UserEntityModification
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,13 +29,11 @@ namespace Toro.API.Migrations
 
                     b.Property<DateTime>("Created");
 
-                    b.Property<DateTime?>("LastActive");
+                    b.Property<DateTime>("LastActive");
 
-                    b.Property<byte[]>("PasswordHash")
-                        .IsRequired();
+                    b.Property<byte[]>("PasswordHash");
 
-                    b.Property<byte[]>("PasswordSalt")
-                        .IsRequired();
+                    b.Property<byte[]>("PasswordSalt");
 
                     b.Property<string>("UserName")
                         .IsRequired();
